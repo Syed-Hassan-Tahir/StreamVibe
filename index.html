@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StreamVibe 🎬</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Stream<span>Vibe</span> 🎬</h1>
+    <input type="text" id="searchInput" placeholder="Search for movies..." />
+  </header>
+
+  <main>
+    <div id="moviesContainer" class="movies-grid"></div>
+
+    <!-- Video Modal -->
+   <!-- inside <main> -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <iframe id="videoPlayer" title="StreamVibe Movie Player" frameborder="0" allowfullscreen></iframe>
+   </div>
+</div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
