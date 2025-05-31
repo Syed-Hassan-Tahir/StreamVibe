@@ -11,6 +11,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 h1 {
@@ -97,4 +99,49 @@ iframe#videoPlayer {
   height: 480px;
   border: none;
   border-radius: 8px;
+}
+
+/* ✅ Responsive Media Queries */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #searchInput {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  iframe#videoPlayer {
+    height: 300px;
+  }
+
+  .movie-poster {
+    height: 230px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #searchInput {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  iframe#videoPlayer {
+    height: 220px;
+  }
+
+  .movie-poster {
+    height: 200px;
+  }
+
+  .modal-content {
+    padding: 0.5rem;
+  }
 }
