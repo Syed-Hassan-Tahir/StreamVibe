@@ -29,15 +29,18 @@ tvShowsBtn.addEventListener('click', () => {
   fetchTVShows();
 });
 
-searchInput.addEventListener('input', (e) => {
-  const query = e.target.value.trim();
-  if (!query) {
-    currentMode === 'movie' ? fetchMovies() : fetchTVShows();
-    return;
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const query = e.target.value.trim();
+    if (!query) {
+      currentMode === 'movie' ? fetchMovies() : fetchTVShows();
+      return;
+    }
+    const endpoint = currentMode === 'movie' ? 'search/movie' : 'search/tv';
+    fetchItems(`${apiBaseUrl}/${endpoint}?api_key=${apiKey}&query=${encodeURIComponent(query)}`);
   }
-  const endpoint = currentMode === 'movie' ? 'search/movie' : 'search/tv';
-  fetchItems(`${apiBaseUrl}/${endpoint}?api_key=${apiKey}&query=${encodeURIComponent(query)}`);
 });
+
 
 function fetchMovies() {
   fetchItems(`${apiBaseUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=1`);
