@@ -17,6 +17,10 @@
       autocomplete="off"
       spellcheck="false"
     />
+    <div class="top-margin">
+      <button id="moviesBtn">Movies</button>
+      <button id="tvShowsBtn">TV Shows</button>
+    </div>
   </header>
 
   <main>
@@ -28,11 +32,17 @@
         <button id="closeModal" class="close" aria-label="Close video player">&times;</button>
         <iframe 
           id="videoPlayer" 
-          title="StreamVibe Movie Player" 
+          title="StreamVibe Player" 
           frameborder="0" 
           allowfullscreen
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         ></iframe>
+
+        <!-- Season and Episode Controls -->
+        <div id="seasonControls">
+          <select id="seasonSelect" aria-label="Select Season"></select>
+          <div id="episodeList"></div>
+        </div>
       </div>
     </div>
   </main>
