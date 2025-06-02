@@ -15,6 +15,14 @@ const tvShowsBtn = document.getElementById('tvShowsBtn');
 
 let currentMode = 'movie';
 
+const bannedWords = ['sex','porn', 'porno', 'erotic', 'lust', 'xxx', 'fetish', 'nsfw'];
+
+const isSafe = (title, overview) => {
+  const lowerTitle = title?.toLowerCase() || '';
+  const lowerDesc = overview?.toLowerCase() || '';
+  return !bannedWords.some(word => lowerTitle.includes(word) || lowerDesc.includes(word));
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   fetchMovies();
 });
@@ -37,24 +45,26 @@ searchInput.addEventListener('keydown', (e) => {
       return;
     }
     const endpoint = currentMode === 'movie' ? 'search/movie' : 'search/tv';
-    fetchItems(`${apiBaseUrl}/${endpoint}?api_key=${apiKey}&query=${encodeURIComponent(query)}`);
+    fetchItems(`${apiBaseUrl}/${endpoint}?api_key=${apiKey}&include_adult=false&certification_country=US&certification.lte=PG-13&query=${encodeURIComponent(query)}`);
   }
 });
 
-
 function fetchMovies() {
-  fetchItems(`${apiBaseUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=1`);
+  fetchItems(`${apiBaseUrl}/movie/popular?api_key=${apiKey}&include_adult=false&certification_country=US&certification.lte=PG-13&language=en-US&page=1`);
 }
 
 function fetchTVShows() {
-  fetchItems(`${apiBaseUrl}/tv/popular?api_key=${apiKey}&language=en-US&page=1`);
+  fetchItems(`${apiBaseUrl}/tv/popular?api_key=${apiKey}&include_adult=false&language=en-US&page=1`);
 }
 
 async function fetchItems(url) {
   try {
     const res = await fetch(url);
     const data = await res.json();
-    displayItems(data.results);
+    const filtered = data.results.filter(item =>
+      isSafe(item.title || item.name, item.overview)
+    );
+    displayItems(filtered);
   } catch (err) {
     console.error(err);
     moviesContainer.innerHTML = "<p>Couldn't load items. Try again later.</p>";
@@ -64,7 +74,7 @@ async function fetchItems(url) {
 function displayItems(items) {
   moviesContainer.innerHTML = '';
   if (!items.length) {
-    moviesContainer.innerHTML = '<p>No results found.</p>';
+    moviesContainer.innerHTML = '<p>No safe results found.</p>';
     return;
   }
 
