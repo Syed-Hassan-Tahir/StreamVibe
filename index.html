@@ -5,23 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StreamVibe 🎬</title>
   <link rel="stylesheet" href="style.css" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8977202870268109"
-     crossorigin="anonymous"></script>
+  <!-- Native Banner Ad Script -->
+  <script async="async" data-cfasync="false" src="https://pl26892276.profitableratecpm.com/66dc9aacf82b46ec29959e0ac039d9c7/invoke.js"></script>
 </head>
 <body>
   <header>
-    <h1>Stream<span>Vibe</span> 🎬</h1>
-    <input 
-      type="search" 
-      id="searchInput" 
-      placeholder="Search for movies..." 
-      aria-label="Search for movies"
-      autocomplete="off"
-      spellcheck="false"
-    />
-    <div class="top-margin">
-      <button id="moviesBtn">Movies</button>
-      <button id="tvShowsBtn">TV Shows</button>
+    <!-- Native Banner Ad -->
+    <div id="container-66dc9aacf82b46ec29959e0ac039d9c7" class="ad-container"></div>
+    
+    <div class="header-content">
+      <h1>Stream<span>Vibe</span> 🎬</h1>
+      <input 
+        type="search" 
+        id="searchInput" 
+        placeholder="Search for movies..." 
+        aria-label="Search for movies"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <div class="top-margin">
+        <button id="moviesBtn">Movies</button>
+        <button id="tvShowsBtn">TV Shows</button>
+      </div>
     </div>
   </header>
 
@@ -39,8 +44,6 @@
           allowfullscreen
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         ></iframe>
-
-        <!-- Season and Episode Controls -->
         <div id="seasonControls">
           <select id="seasonSelect" aria-label="Select Season"></select>
           <div id="episodeList"></div>
@@ -49,6 +52,19 @@
     </div>
   </main>
 
+  <!-- Delayed Popunder (5s after load) -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        window.open(
+          "https://www.profitableratecpm.com/nfde18yn?key=ec0f7205054b602e686de6b24ab09d04", 
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }, 5000);
+    });
+  </script>
+  
   <script src="script.js"></script>
 </body>
 </html>
